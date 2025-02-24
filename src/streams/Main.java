@@ -1,12 +1,13 @@
 package streams;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
         File dir = new File("my_dir");
 //        File file1 = new File("my_dir", "file1.txt");
-//        File file2 = new File(dir, "file2.txt");
+        File file2 = new File(dir, "file2.txt");
 
         if (dir.mkdir()) {
             System.out.println("Directory created");
@@ -19,6 +20,16 @@ public class Main {
             System.out.println("File renamed");
         } else   {
             System.out.println("File not renamed");
+        }
+
+        try {
+            if (new_my_dir.exists()){
+                if (file2.createNewFile()){
+                    System.out.println("File created");
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
